@@ -6,3 +6,9 @@
 
 ## UI 없이 
 * https://dsnight.tistory.com/15
+
+
+## 기술
+* Speaker Recognition
+* Speech to Text
+* https://azure.microsoft.com/ko-kr/products/cognitive-services/
