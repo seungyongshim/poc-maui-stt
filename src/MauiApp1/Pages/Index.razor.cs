@@ -9,14 +9,11 @@ public partial class Index : IDisposable
     [Inject]
     private IRootContext Root { get; init; }
 
-    private string State { get; set; }
+    private IList<string> State { get; set; } = new List<string>();
 
     private EventStreamSubscription<object> EventStream { get; set; }
 
-    public void Dispose()
-    {
-        EventStream.Unsubscribe();
-    }
+    public void Dispose() => EventStream.Unsubscribe();
 
     public Task ButtonHandlerAsync(MouseEventArgs args)
     {
@@ -31,7 +28,7 @@ public partial class Index : IDisposable
 
         EventStream = Root.System.EventStream.Subscribe<StringState>(s =>
         {
-            State += "\n\n" + s.Value;
+            State.Add(s.Value);
             StateHasChanged();
         });
     }

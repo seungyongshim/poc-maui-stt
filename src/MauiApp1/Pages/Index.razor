@@ -1,6 +1,9 @@
 @page "/"
 
-<button @onclick="@(e => )">Record On/Off!!</button>
+<button @onclick="@ButtonHandlerAsync">Record On/Off!!</button>
 <br>
 
-<textarea @bind="@State"></textarea>
+@foreach(var item in State)
+{
+    @item<br/>
+}
