@@ -1,6 +1,7 @@
 using Android.Speech;
 using MauiApp1.Data;
 using Microsoft.Extensions.Logging;
+using Proto;
 
 namespace MauiApp1
 {
@@ -17,10 +18,10 @@ namespace MauiApp1
                 });
 
             builder.Services.AddMauiBlazorWebView();
-            builder.Services.AddSingleton<SpeechRecognizer>();
+            builder.Services.AddSingleton<IRootContext>(sp => new ActorSystem().Root);
 
 #if DEBUG
-		builder.Services.AddBlazorWebViewDeveloperTools();
+        builder.Services.AddBlazorWebViewDeveloperTools();
 		builder.Logging.AddDebug();
 #endif
 
